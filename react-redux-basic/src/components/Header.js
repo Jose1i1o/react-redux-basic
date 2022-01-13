@@ -1,21 +1,20 @@
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-import { increaseCounter, decreaseCounter } from '../redux/counter/actions';
+import { 
+    increaseCounter, 
+    decreaseCounter,
+    resetCounter
+} from '../redux/counter/actions';
 
-const Header = ({ onIncrease, onDecrease }) => {
+const Header = () => {
+    const dispatch = useDispatch();
     return (
         <header>
-            <button onClick={onIncrease}>+</button>
-            <button onClick={onDecrease}>-</button>
+            <button onClick={() => dispatch(increaseCounter())}>+</button>
+            <button onClick={() => dispatch(decreaseCounter())}>-</button>
+            <button onClick={() => dispatch(resetCounter())}>RESET</button>
         </header>
     );
 };
 
-const mapDispatchToProps = (dispatch) =>({
-        onIncrease: () => dispatch(increaseCounter()),
-        onDecrease: () => dispatch(decreaseCounter())
-});
-
-const reduxHoc = connect(null, mapDispatchToProps);
-
-export default reduxHoc(Header);
+export default Header;
