@@ -1,9 +1,19 @@
-const Footer = ({ counter }) => {
+import { connect } from 'react-redux';
+
+
+const Footer = ({ counterNumber }) => {
     return (
         <footer>
-            <p>Counter: {counter}</p>
+            Counter: {counterNumber}
         </footer>
     );
 };
 
-export default Footer;
+const mapStateToProps = (state) => {
+    return {
+        counterNumber: state.counter
+    }
+}
+
+const reduxHoc = connect(mapStateToProps);
+export default reduxHoc(Footer);

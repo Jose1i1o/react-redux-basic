@@ -1,3 +1,3 @@
-const initialState = 0;
+const initialState = 77;
 
 export default initialState;
