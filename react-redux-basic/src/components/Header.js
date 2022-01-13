@@ -1,3 +1,7 @@
+import { connect } from 'react-redux';
+
+import { increaseCounter, decreaseCounter } from '../redux/counter/actions';
+
 const Header = ({ onIncrease, onDecrease }) => {
     return (
         <header>
@@ -7,4 +11,11 @@ const Header = ({ onIncrease, onDecrease }) => {
     );
 };
 
-export default Header;
+const mapDispatchToProps = (dispatch) =>({
+        onIncrease: () => dispatch(increaseCounter()),
+        onDecrease: () => dispatch(decreaseCounter())
+});
+
+const reduxHoc = connect(null, mapDispatchToProps);
+
+export default reduxHoc(Header);
