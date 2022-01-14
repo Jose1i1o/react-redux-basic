@@ -3,7 +3,8 @@ import { useDispatch } from 'react-redux';
 import { 
     increaseCounter, 
     decreaseCounter,
-    resetCounter
+    resetCounter,
+    setRandomCounter
 } from '../redux/counter/actions';
 
 const Header = () => {
@@ -13,6 +14,7 @@ const Header = () => {
             <button onClick={() => dispatch(increaseCounter())}>+</button>
             <button onClick={() => dispatch(decreaseCounter())}>-</button>
             <button onClick={() => dispatch(resetCounter())}>RESET</button>
+            <button onClick={() => dispatch(setRandomCounter())}>RANDOM</button>
         </header>
     );
 };
